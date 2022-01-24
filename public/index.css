@@ -1,0 +1,254 @@
+
+body {
+  --template-bg-color: #202E5F;
+  --template-color-1: #FCC160;
+  --template-placeholder-color-1: #FCC160AA;
+  --template-color-2: #F16B7D;
+  --template-placeholder-color-2: #F16B7DAA;
+  --font-color: #FCFCFC;
+  --placeholder-color: #fffa;
+  font-family: 'Fb Jabutinski Con';
+  margin: 0;
+}
+
+.english {
+  font-family: 'Fb Jabutinski Con English';
+}
+
+#generator-wrapper {
+  width: 100vw;
+  height: 83.3vw;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+#generator-wrapper button {
+  grid-area: 1 / 1 / 2 / 2;
+  position: relative;
+  border-radius: 50vw;
+  border: none;
+  color: white;
+  height: 6%;
+  font-family: 'FB JABUTINSKI CON';
+  top: 50%;
+  padding: 0;
+  margin: 8%;
+  background: var(--template-bg-color);
+  font-size: 4vw;
+}
+
+.image-generator {
+  grid-area: 1 / 2 / 2 / 3;
+  background: var(--template-bg-color);
+  display: grid;
+  grid-template-rows: 10fr 6fr 11fr;
+}
+
+.image-generator #banners {
+  grid-area: 1 / 1 / 2 / 2;
+  display: grid;
+  grid-template-columns: 3fr 7fr 3fr;
+  grid-template-rows: 4fr 6fr 4fr 13fr 4fr 3fr;
+}
+
+.image-generator #info {
+  grid-area: 2 / 1 / 3 / 2;
+  display: grid;
+  grid-template-rows: 1fr 8fr 1fr;
+  grid-template-columns: 1fr 21fr 1fr;
+}
+
+
+.image-generator #info .textarea {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.image-generator #footer {
+  grid-area: 3 / 1 / 4 / 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#stripes {
+  width: 100%;
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+#your-turn-stripes {
+  width: 100%;
+  grid-area: 1 / 2 / 2 / 3;
+  background-image: url("images/footer.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  font-family: "Fb Pashut Corduroy";
+  font-size: 8.6vw;
+  display: flex;
+  flex-direction: column;
+}
+
+#your-turn-stripes p {
+  margin: 0;
+  color: var(--template-bg-color);
+  direction: rtl;
+  transform: rotate(7deg) translate(-5%, 53%);
+  margin-top: 8%;
+}
+
+#your-turn-stripes p:nth-child(2) {
+  text-indent: 10%;
+}
+
+#footer-info {
+  direction: rtl;
+  display: flex;
+  flex-direction: column;
+  font-size: 4.5vw;
+  color: white;
+  padding: 5% 5% 0% 0%;
+}
+
+#footer-info p {
+  margin: 0;
+  width: 75%;
+  font-weight: bold;
+}
+
+#footer-info p:nth-child(-n+3){
+  color: var(--template-color-2);
+}
+
+
+#user-images-banner {
+  grid-area: 2 / 2 / 6 / 3;
+  display: flex;
+  flex-direction: row-reverse;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url(images/circles.png);
+  position: relative;
+}
+
+.user-image-container {
+  width: 50%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.user-image-container p {
+  margin: 0;
+  text-align: center;
+  color: var(--placeholder-color);
+  margin-top: 30%;
+  font-size: 3.2vw;
+}
+
+.user-image-container p:nth-child(2) {
+  left: 39%;
+  position: absolute;
+  top: 25%;
+  font-size: 7vw;
+  font-family: 'FB PASHUT CORDUROY';
+}
+
+#user-self-image-container {
+  transform: translateX(-5%);
+}
+
+#user-inspiration-image-container {
+  transform: translateX(8.2%);
+}
+
+#user-self-image-container div p:nth-child(2){
+  color: var(--template-color-2);
+}
+
+#user-inspiration-image-container div p:nth-child(2){
+  left: 33%;
+  color: var(--template-color-1);
+}
+
+.user-image {
+  border-radius: 50%;
+  overflow: hidden;
+  height: 80%;
+  margin: 11.6% 3.7% 5.4% 1.5%;
+}
+
+
+.textarea {
+  font-size: 2.8vw;
+  cursor: text;
+  color: var(--font-color);;
+  border: none;
+  direction: rtl;
+  resize: none;
+  width: 80%;
+  background: #0000;
+  font-family: inherit;
+  overflow: hidden;
+  text-align: right;
+  padding: 0% 1%;
+  line-height: 140%;
+  display: block;
+}
+
+.textarea[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: var(--placeholder-color);; 
+}
+
+.textarea[placeholder]:empty:focus::before {
+    content: "";
+}
+
+#user-self-name {
+  grid-area: 3 / 3 / 4 / 4;
+  text-align: left;
+  --placeholder-color: var(--template-placeholder-color-2);
+  font-weight: bold;
+  color: var(--template-color-2);  
+}
+
+#user-self-description {
+  grid-area: 4 / 3 / 5 / 4;
+  text-align: left;
+}
+
+#user-self-name, #user-self-description{
+  margin-left: 5%;
+}
+
+#user-inspiration-name {
+  grid-area: 3 / 1 / 4 / 2;
+  justify-self: right;
+  --placeholder-color: var(--template-placeholder-color-1);
+  font-weight: bold;
+  color: var(--template-color-1);
+}
+
+#user-inspiration-description {
+  grid-area: 4 / 1 / 5 / 2;
+  justify-self: right;
+}
+
+#user-inspiration-name, #user-inspiration-description {
+  margin-right: 5%;
+}
+
+@keyframes invalid-flash {
+  from {background-color: #f007;}
+  to {background-color: none;}
+}
+
+.invalid-flash {
+  animation-name: invalid-flash;
+  animation-duration: 2s;
+}
