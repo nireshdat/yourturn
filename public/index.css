@@ -49,7 +49,7 @@ body {
   grid-area: 1 / 1 / 2 / 2;
   display: grid;
   grid-template-columns: 3fr 7fr 3fr;
-  grid-template-rows: 4fr 6fr 4fr 13fr 4fr 3fr;
+  grid-template-rows: 4fr 5fr 4fr 13fr 7fr 0fr;
 }
 
 .image-generator #info {
@@ -81,7 +81,7 @@ body {
 #your-turn-stripes {
   width: 100%;
   grid-area: 1 / 2 / 2 / 3;
-  background-image: url("images/footer.png");
+  background-image: url("images/footer.jpeg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right;
@@ -178,8 +178,8 @@ body {
 .user-image {
   border-radius: 50%;
   overflow: hidden;
-  height: 80%;
-  margin: 11.6% 3.7% 5.4% 1.5%;
+  height: 78.7%;
+  margin: 13% 4.3% 5.4% 0.7%;
 }
 
 
