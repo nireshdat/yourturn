@@ -12,7 +12,7 @@ function validateRequiredField() {
 	if ($("#user-inspiration-image canvas").length === 0) {
 		unfilledElms.push($("#user-inspiration-image")[0]);
 	}
-	
+
 	$(".textarea, .user-image canvas").each((i, elm) => {
 		elm.classList.remove("invalid-flash");
 	})
@@ -41,7 +41,7 @@ function placeCaretAtEnd(el) {
     }
 }
 
-const magicLineHeight = 1.2;
+const magicLineHeight = 1.15;
 
 function countLines(elm) {
 	var fontSizeString = window.getComputedStyle(elm, null).getPropertyValue('font-size');
