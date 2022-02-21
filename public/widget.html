@@ -1,3 +1,4 @@
+<meta content="width=device-width, initial-scale=1" name="viewport" />
 <style> 
 @font-face {
   font-family: "Fb Jabutinski Con";
@@ -18,7 +19,8 @@
 <script src="js/blueimp-load-image/js/load-image.all.min.js"></script>
 <script src="js/html2canvas/dist/html2canvas.js"></script>
 <script src="js/jquery/dist/jquery.min.js"></script>
-
+<link rel="stylesheet" href="css/croppie.css" />
+<script src="js/croppie/croppie.min.js"></script>
 <link rel="stylesheet" href="index.css">
 <div id="generator-wrapper">
   <div class="image-generator" id="generator">
@@ -29,26 +31,30 @@
       <!--textarea id="user-self-name" maxlength="50" rows="1" cols="10" wrap="hard" placeholder="השם שלך" label="השם שלך "></textarea-->
         <span contenteditable="true" id="user-self-description" class="textarea" rows="3" cols="9"placeholder="תיאור התפקיד שלך" label="תיאור התפקיד שלך"></span>
       <div id="user-images-banner">
+        <img src="images/circles.png" />
         <div id="user-self-image-container" class="user-image-container">
           <div id="user-self-image" class="user-image">
             <p>תמונה שלך</p>
             <p>+</p>
           </div>
+          <button id="user-self-container-button">מיקום תמונה</button>
         </div>
         <div id="user-inspiration-image-container" class="user-image-container">
             <div id="user-inspiration-image" class="user-image">
               <p>תמונה שלה</p>
               <p>+</p>
             </div>
+            <button id="user-inspiration-container-button">מיקום תמונה</button>
         </div>
       </div>
-      <span contenteditable="true" id="user-inspiration-name" class="textarea"  rows="1" placeholder="שם הדמות שבחרת" label="שם הדמות שבחרת"></span>
+      <span contenteditable="true" id="user-inspiration-name" class="textarea"  rows="1" placeholder="שם הדמות " label="שם הדמות "></span>
       <span contenteditable="true" id="user-inspiration-description" class="textarea" rows="3" placeholder="תיאור התפקיד שלה" label="תיאור התפקיד של הדמות שבחרת"></span>
     </div>
     <div id="info">
       <span contenteditable="true" class="textarea" rows="4" placeholder="תארי איך הדמות הנשית השפיעה עלייך בילדות"  label="main info of your connection to the character"></span>
     </div>
     <div id="footer">
+      <img src="images/footer_full.png" />
     </div>
   </div>
   <button onclick="takeScreenshot()">הורדה</button>
@@ -78,5 +84,4 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
-  const database = getDatabase(app);
 </script>

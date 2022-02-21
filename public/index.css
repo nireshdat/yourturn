@@ -7,6 +7,10 @@ body {
   --template-placeholder-color-2: #F16B7DAA;
   --font-color: #FCFCFC;
   --placeholder-color: #fffa;
+  --image-container-font-size: 3.2vw;
+  --image-container-plus-size: 7vw;
+  --textarea-font-size: 2.6vw;
+  --wrapper-button-font-size: 4vw;
   font-family: 'Fb Jabutinski Con';
   margin: 0;
 }
@@ -14,6 +18,8 @@ body {
 .english {
   font-family: 'Fb Jabutinski Con English';
 }
+
+
 
 #generator-wrapper {
   width: 100vw;
@@ -35,27 +41,53 @@ body {
   padding: 0;
   margin: 8%;
   background: var(--template-bg-color);
-  font-size: 4vw;
+  font-size: var(--wrapper-button-font-size);
 }
 
 .image-generator {
   grid-area: 1 / 2 / 2 / 3;
   background: var(--template-bg-color);
   display: grid;
-  grid-template-rows: 12fr 5fr 8fr;
+  grid-template-rows: 11fr 6fr 8fr;
 }
 
 .image-generator #banners {
   grid-area: 1 / 1 / 2 / 2;
   display: grid;
   grid-template-columns: 3fr 7fr 3fr;
-  grid-template-rows: 6fr 4fr 3fr 6fr 2fr 3fr;;
+  grid-template-rows: 4fr 4fr 3fr 6fr 2fr 3fr;;
+}
+
+@media screen and ( max-aspect-ratio: 1/1) {
+  body {
+    --image-container-font-size: 3.84vw;
+    --image-container-plus-size: 8.4vw;
+    --textarea-font-size: 3.12vw;
+  }
+
+  #generator-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: 7fr 1fr;
+    width: 100vw;
+    height: 114.286vw;
+  }
+
+  #generator-wrapper button {
+    grid-area: 2 / 1 / 3 / 2;
+    height: 50%;
+    margin: 3%;
+    top: unset;
+  }
+
+  .image-generator {
+    grid-area: 1 / 1 / 2 / 2;
+  }
 }
 
 .image-generator #info {
   grid-area: 2 / 1 / 3 / 2;
   display: grid;
-  grid-template-rows: 8fr 2fr;
+  grid-template-rows: 8fr 4fr;
   grid-template-columns: 1fr 21fr 1fr;
 }
 
@@ -70,10 +102,13 @@ body {
 .image-generator #footer {
   background-color: var(--template-color-2);
   grid-area: 3 / 1 / 4 / 2;
-  background-image: url(images/footer_full.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right;
+  position: relative;
+}
+
+.image-generator #footer img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 
@@ -81,11 +116,13 @@ body {
   grid-area: 2 / 2 / 6 / 3;
   display: flex;
   flex-direction: row-reverse;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  background-image: url(images/circles.png);
   position: relative;
+}
+
+#user-images-banner img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .user-image-container {
@@ -101,14 +138,14 @@ body {
   text-align: center;
   color: var(--placeholder-color);
   margin-top: 30%;
-  font-size: 3.2vw;
+  font-size: var(--image-container-font-size);
 }
 
 .user-image-container p:nth-child(2) {
   left: 36%;
   position: absolute;
   top: 25%;
-  font-size: 7vw;
+  font-size: var(--image-container-plus-size);
   font-family: 'FB PASHUT CORDUROY';
 }
 
@@ -117,7 +154,7 @@ body {
 }
 
 #user-inspiration-image-container {
-  transform: translateX(9.8%);
+  transform: translateX(8.2%);
 }
 
 #user-self-image-container div p:nth-child(2){
@@ -133,13 +170,14 @@ body {
   border-radius: 50%;
   overflow: hidden;
   height: 83.3%;
-  margin: 9.2% 6.4% 5.4% 0.7%;
+  margin: 9.2% 4.2% 5.4% 0.7%;
+  position: relative;
 }
 
 
 
 .textarea {
-  font-size: 2.6vw;
+  font-size: var(--textarea-font-size);
   cursor: text;
   color: var(--font-color);;
   border: none;
@@ -206,4 +244,20 @@ body {
 .invalid-flash {
   animation-name: invalid-flash;
   animation-duration: 2s;
+}
+
+
+
+button#user-self-container-button {
+  position: absolute;
+  width: 80%;
+  height: 20%;
+  background: red;
+}
+
+button#user-inspiration-container-button {
+  position: absolute;
+  width: 80%;
+  height: 20%;
+  background: red;
 }

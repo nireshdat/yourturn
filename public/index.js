@@ -86,11 +86,26 @@ function limitHeight(elm) {
 
 $(".textarea").each(function(){limitHeight(this)});
 
+function sendInspiration(name, title, description) {
+	jQuery.post(
+		"/sendinspiration",
+		{
+			"name": name,
+			"title": title,
+			"description": description
+		}
+	)
+}
+
 function takeScreenshot(){
 	if (!validateRequiredField()) {
 		return false;
 	}
 	//svgToCanvas(document.getElementById("generator"));
+	name = $("#user-inspiration-name")[0].innerText;
+	title = $("#user-inspiration-description")[0].innerText;
+	description = $("#info .textarea")[0].innerText;
+	sendInspiration(name, title, description);
 	html2canvas(
 		document.getElementById("generator"), 
 		{allowTaint: true, scale: 10}
@@ -106,17 +121,74 @@ function takeScreenshot(){
 	return true;
 }
 
-function updateUserImage(image, container, inputElm) {
+
+function startCroppie(owner){
+	$container = $('#user-'+ owner + '-image');
+	$img = $('#user-' + owner +'-image img');
+	$button = $('button#user-' + owner + '-container-button')
+	$button[0].innerText = "סיום עריכה"
+	$img.hide();
+	$container.attr('in-edit', "yes");
+	$button.attr('in-edit', 'yes');
+	$container.croppie({
+		url:$img.src,
+		showZoomer: false,
+		enableResize:true,
+		viewport:{width:"90%",height:"90%",type:'circle'},
+		minZoom:1,
+		enforceBoundary:false,
+		boundry:{width:"100%",height:"100%"}
+	});
+}
+
+function stopCroppie(owner) {
+	$container = $('#user-'+ owner + '-image');
+	$img = $('#user-' + owner +'-image img');
+	$button = $('button#user-' + owner + '-container-button')
+	$button[0].innerText = "מיקום תמונה";
+	$container.croppie('result', {type:'blob'}).then(function (resp) {
+		$img.src = resp;
+		$('.cr-boundary, .cr-slider-wrap').remove();
+		$container.croppie('destroy');
+	});
+	$container.attr('in-edit', "no");
+	$button.attr('in-edit', 'no');
+	$img.show()
+
+}
+
+function editorButtonClick(owner) {
+	$button = $('button#user-' + owner + '-container-button');
+	if ($button.attr('in-edit') === "yes") {
+		stopCroppie(owner);
+	}
+	else {
+		startCroppie(owner);
+	}
+}
+
+$('button#user-inspiration-container-button').on('click', e => {editorButtonClick('inspiration')});
+
+$('button#user-self-container-button').on('click', e => {editorButtonClick('self')});
+
+function updateUserImage(image, container, inputElm, openEditor) {
 	var ratio = 1;
 	var width = container.offsetWidth;
 	var height = width * ratio;
-	container.onclick = (evt) => {evt.preventDefault(); inputElm.click()};
+	container.onclick = (evt) => {
+		evt.preventDefault();
+		if (container.getAttribute('in-edit') !== "yes"){
+			inputElm.click();
+		}
+	};
 	if (image !== "") {
 		loadImage(
 	    	image,
 		    function (img) {
+		    	imgElm = document.createElement("img");
+		    	imgElm.src = img.toDataURL();
 				container.innerHTML = "";
-		    	container.appendChild(img);
+		    	container.appendChild(imgElm);
 		    },
 		    {
 		    	maxWidth: width,
@@ -134,17 +206,17 @@ function initializeUserImages() {
 	userSelfImageInputElm = document.getElementById('user-self-image-input')
 	userSelfImageInputElm.onchange = function () {
 		container = document.getElementById('user-self-image')
-		updateUserImage(this.files[0], container, userSelfImageInputElm);
+		updateUserImage(this.files[0], container, userSelfImageInputElm, true);
 	}
 
 	userInspirationImageInputElm = document.getElementById('user-inspiration-image-input');
 	userInspirationImageInputElm.onchange = function () {
 		container = document.getElementById('user-inspiration-image')
-		updateUserImage(this.files[0], container, userInspirationImageInputElm);
+		updateUserImage(this.files[0], container, userInspirationImageInputElm, true);
 	}
 
-	updateUserImage("", document.getElementById('user-self-image'), userSelfImageInputElm);
-	updateUserImage("", document.getElementById('user-inspiration-image'), userInspirationImageInputElm);
+	updateUserImage("", document.getElementById('user-self-image'), userSelfImageInputElm, false);
+	updateUserImage("", document.getElementById('user-inspiration-image'), userInspirationImageInputElm, false);
 }
 
 initializeUserImages();
