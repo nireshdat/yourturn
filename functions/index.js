@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
         return;
     }
     if (req.cookies.__session === undefined) {
-        res.cookie("__session", uuidv4(), { secure: true, sameSite: "none"});
+        res.cookie("__session", uuidv4(), { secure: true });
     }
   	res.redirect("/widget.html");
 });
