@@ -20,7 +20,6 @@ body {
 }
 
 
-
 #generator-wrapper {
   width: 100vw;
   height: 83.3vw;
@@ -127,7 +126,7 @@ body {
 
 .user-image-container {
   width: 50%;
-  height: 100%;
+  /*height: 100%;*/
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -168,13 +167,20 @@ body {
 
 .user-image {
   border-radius: 50%;
-  overflow: hidden;
-  height: 83.3%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+/*  overflow: hidden;
+  height: 83.3%;*/
   margin: 9.2% 4.2% 5.4% 0.7%;
-  position: relative;
+  display: block;
+  position:  relative;
 }
 
-
+.user-image canvas {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+}
 
 .textarea {
   font-size: var(--textarea-font-size);
@@ -244,20 +250,4 @@ body {
 .invalid-flash {
   animation-name: invalid-flash;
   animation-duration: 2s;
-}
-
-
-
-button#user-self-container-button {
-  position: absolute;
-  width: 80%;
-  height: 20%;
-  background: red;
-}
-
-button#user-inspiration-container-button {
-  position: absolute;
-  width: 80%;
-  height: 20%;
-  background: red;
 }
