@@ -111,10 +111,20 @@ function takeScreenshot(){
 	sendInspiration(name, title, description);
 	html2canvas(
 		document.getElementById("generator"), 
-		{allowTaint: true, scale: 10}
+		{
+			allowTaint: true,
+			scale: 4, 			
+			windowHeight: document.documentElement.clientHeight,
+			windowWidth: document.documentElement.clientWidth
+		}
 	).then(
 		function(canvas) {
 			var image = canvas.toDataURL();
+			var tempcanvas = document.createElement('canvas');
+			tempcanvas.width=canvas.width;
+		    tempcanvas.height=canvas.height;
+		    var context=tempcanvas.getContext('2d');
+		    context.drawImage(canvas,465,40,465,524,0,0,465,524);
 			var aDownloadLink = document.createElement('a');
 			aDownloadLink.download = 'your_turn.png';
 			aDownloadLink.href = image;

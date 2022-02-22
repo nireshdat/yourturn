@@ -22,6 +22,16 @@ app.get('/', (req, res) => {
   	res.redirect("/widget.html");
 });
 
+app.get('/test', (req, res) => {
+  	if (req.cookies === undefined) {
+        res.send("<p>no cookies</p>");
+        return;
+    }
+    if (req.cookies.__session === undefined) {
+        res.cookie("__session", uuidv4(), { secure: true });
+    }
+  	res.redirect("/test.html");
+});
 
 app.post('/sendinspiration', (req, res) => {
 	uuid = req.cookies.__session;

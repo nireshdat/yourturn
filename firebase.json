@@ -3,6 +3,13 @@
     "source": "functions"
   },
   "hosting": {
+    "headers": {
+      "source": "**/*.@(js|css|html)",
+      "headers": [ {
+        "key": "Cache-Control",
+        "value": "max-age=300"
+      } ]
+    },
     "public": "public",
     "ignore": [
       "firebase.json",
