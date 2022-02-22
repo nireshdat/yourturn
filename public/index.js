@@ -82,9 +82,12 @@ function textareaHandleOnInput(evt) {
 
 function limitHeight(elm) {
 	elm.oninput = textareaHandleOnInput;
+	elm.spellcheck = false;
+	elm.focus();
+	elm.blur();
 }
 
-$(".textarea").each(function(){limitHeight(this)});
+$(".textarea").each(function(){limitHeight(this);});
 
 function sendInspiration(name, title, description) {
 	jQuery.post(
