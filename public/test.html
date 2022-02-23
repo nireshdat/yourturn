@@ -1,0 +1,84 @@
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<style> 
+@font-face {
+  font-family: "Fb Jabutinski Con";
+  src: url("fonts/FbJabutinski-ConRegular.otf");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Fb Jabutinski Con English";
+  src: url("fonts/FbJabutinskiEng-ConBold.otf");
+}
+@font-face {
+  font-family: "Fb Pashut Corduroy";
+  src: url("fonts/FbPashutCorduroy-Normal.otf");
+  font-weight: bold;
+}
+</style>
+
+<script src="js/blueimp-load-image/js/load-image.all.min.js"></script>
+<script src="js/html2canvas/dist/html2canvas.js"></script>
+<script src="js/jquery/dist/jquery.min.js"></script>
+
+<link rel="stylesheet" href="test.css">
+<div id="generator-wrapper">
+  <div class="image-generator" id="generator">
+    <div id="banners">
+      <input hidden type="file" name="photo" id="user-inspiration-image-input" title="העלאת תמונה" tabindex="-1" accept=".png, .jpg, .jpeg">
+      <input hidden type="file" name="photo" id="user-self-image-input" title="העלאת תמונה" tabindex="-1" accept=".png, .jpg, .jpeg">
+        <span contenteditable="true" id="user-self-name" class="textarea" rows="1" placeholder="השם שלך" label="השם שלך "></span> 
+      <!--textarea id="user-self-name" maxlength="50" rows="1" cols="10" wrap="hard" placeholder="השם שלך" label="השם שלך "></textarea-->
+        <span contenteditable="true" id="user-self-description" class="textarea" rows="3" cols="9"placeholder="תיאור התפקיד שלך" label="תיאור התפקיד שלך"></span>
+      <div id="user-images-banner">
+        <img src="images/circles.png" />
+        <div id="user-self-image-container" class="user-image-container">
+          <div id="user-self-image" class="user-image">
+            <p>תמונה שלך</p>
+            <p>+</p>
+          </div>
+        </div>
+        <div id="user-inspiration-image-container" class="user-image-container">
+            <div id="user-inspiration-image" class="user-image">
+              <p>תמונה שלה</p>
+              <p>+</p>
+            </div>
+        </div>
+      </div>
+      <span contenteditable="true" id="user-inspiration-name" class="textarea"  rows="1" placeholder="שם הדמות " label="שם הדמות "></span>
+      <span contenteditable="true" id="user-inspiration-description" class="textarea" rows="3" placeholder="תיאור התפקיד שלה" label="תיאור התפקיד של הדמות שבחרת"></span>
+    </div>
+    <div id="info">
+      <span contenteditable="true" class="textarea" rows="4" placeholder="תארי איך הדמות הנשית השפיעה עלייך בילדות"  label="main info of your connection to the character"></span>
+    </div>
+    <div id="footer">
+      <img src="images/footer_full.png" />
+    </div>
+  </div>
+  <button onclick="takeScreenshot()">הורדה</button>
+</div>
+
+<script src="test.js"></script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAAQrqMDFCNPtuie8sHkZEhojwR-nzwhIo",
+    authDomain: "yourturn-9403f.firebaseapp.com",
+    projectId: "yourturn-9403f",
+    storageBucket: "yourturn-9403f.appspot.com",
+    databaseURL: "https://yourturn-9403f-default-rtdb.europe-west1.firebasedatabase.app/",
+    messagingSenderId: "903596469801",
+    appId: "1:903596469801:web:f93729f2bb0fb685fe3638",
+    measurementId: "G-9F459E46GS"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
