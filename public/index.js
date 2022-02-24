@@ -138,7 +138,8 @@ function updateUserImage(image, container, inputElm) {
 	var ratio = 1;
 	var width = container.offsetWidth;
 	var height = width * ratio;
-	container.onclick = (evt) => {evt.preventDefault(); inputElm.click()};
+	//container.onclick = (evt) => {evt.preventDefault(); inputElm.click()};
+	container.parentElement.onclick = (evt) => {evt.preventDefault(); inputElm.click()};
 	if (image !== "") {
 		loadImage(
 	    	image,
