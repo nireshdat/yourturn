@@ -17,6 +17,7 @@
     "cookie-parser": "^1.4.6",
     "express-session": "^1.17.2",
     "express-session-rsdb": "^0.1.7",
+    "express-useragent": "^1.0.15",
     "firebase-admin": "^10.0.2",
     "firebase-functions": "^3.14.1",
     "uuid": "^8.3.2"

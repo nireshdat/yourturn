@@ -19,6 +19,87 @@ body {
   font-family: 'Fb Jabutinski Con English';
 }
 
+#overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #0004;
+  z-index: 200;
+}
+
+#popup {
+  position: absolute;
+  background: var(--template-color-1);
+  color: var(--template-bg-color);
+  width: 70%;
+  height: 70%;
+  left: 15%;
+  top: 15%;
+  font-size: 5vw;
+  display: grid;
+  grid-template-rows: 1fr 6fr 1fr 2fr;
+  grid-template-columns: 1fr 3fr 1fr 3fr 1fr;
+}
+
+#popup p {
+  grid-area: 2 / 2 / 3 / 5;
+  text-align: center;
+  font-size: 7vw;
+  color: inherit;
+}
+
+#popup a, #popup input {
+  background: var(--template-color-2);
+  text-align: center;
+  border-radius: 10%;
+  box-shadow: 2px 2px 0 0 black;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+#popup input:hover, #popup a:hover {
+  box-shadow: unset;
+}
+
+input#download {
+  grid-area: 3 / 4 / 4 / 5;
+  position: relative;
+}
+
+.loader-layout {
+  display: grid;
+  grid-template-columns: 4fr 4fr 4fr;
+}
+
+a#continue {
+  grid-area: 3 / 2 / 4 / 3;
+  text-align: center;
+  cursor: pointer;
+}
+
+.loader {
+  border: 1vw solid #f3f3f3; /* Light grey */
+  border-top: 1vw solid #3498db; /* Blue */
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  width: 50%;
+  grid-area: 1 / 2 / 2/ 3;
+  height: 50%;
+  margin-top: 10%;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#banners input {
+  opacity: 0;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.1vw;
+  -webkit-tap-highlight-color: transparent;
+}
 
 #generator-wrapper {
   width: 100vw;
@@ -112,18 +193,17 @@ body {
 
 
 #user-images-banner {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(images/circles.png);
   grid-area: 2 / 2 / 6 / 3;
   display: grid;
   grid-template-rows: 0.9fr 10fr 0.9fr;
-  grid-template-columns: 1.2fr 11fr 1fr 11fr 1.2fr;
+  grid-template-columns: 1.4fr 11fr 1fr 11fr 1.4fr;
   position: relative;
 }
 
-#user-images-banner img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
 
 .user-image-container {
 /*  width: 50%;*/
@@ -149,13 +229,11 @@ body {
   font-family: 'FB PASHUT CORDUROY';
 }
 
-#user-self-image-container {
-  /*transform: translateX(-5%);*/
+#user-self-image-container, #user-self-image-input {
   grid-area: 2 / 3 / 3 / 5;
 }
 
-#user-inspiration-image-container {
-/*  transform: translateX(8.2%);*/
+#user-inspiration-image-container, #user-inspiration-image-input {
   grid-area: 2 / 2 / 3 / 4;
 }
 
@@ -185,10 +263,15 @@ body {
   -moz-border-radius: 50%;
 }
 
+.hebrew {
+  color: var(--font-color);
+  direction: rtl;
+}
+
 .textarea {
   font-size: var(--textarea-font-size);
   cursor: text;
-  color: var(--font-color);;
+  color: var(--font-color);
   border: none;
   direction: rtl;
   resize: none;

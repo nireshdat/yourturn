@@ -22,23 +22,29 @@ app.get('/', (req, res) => {
   	res.redirect("/widget.html");
 });
 
-app.get('/test', (req, res) => {
-  	if (req.cookies === undefined) {
-        res.send("<p>no cookies</p>");
-        return;
+
+app.get('/goto-browser', (req, res) => {
+	if (req.headers['user-agent'].includes('FBAV')) {
+    	res.writeHead(200, {
+    		'Access-Control-Allow-Origin' : 'https://www.yourturn2022.com',
+    		'Content-Type': "image/png",
+    		'Content-disposition': 'attachment;filename=your_turn.png',
+    		'Content-Length': 0,
+    	});
+    	res.end('');
     }
-    if (req.cookies.__session === undefined) {
-        res.cookie("__session", uuidv4(), { secure: true });
+    else {
+    	res.redirect("https://www.yourturn2022.com/welcome");
     }
-  	res.redirect("/test.html");
 });
 
 app.post('/sendinspiration', (req, res) => {
 	uuid = req.cookies.__session;
-	if (uuidValidate(uuid) || 
-		req.body.name === undefined || 
-		req.body.title === undefined ||
-		req.body.description === undefined) {
+	if (uuidValidate(uuid) && 
+		req.body.name !== undefined && 
+		req.body.title !== undefined &&
+		req.body.description !== undefined &&
+		req.body.name !== "test") {
 		var inspirationsRef = database.ref("inspirations");
 		var newInspirationRef = inspirationsRef.push();
 		newInspirationRef.set({

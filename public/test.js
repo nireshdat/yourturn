@@ -1,4 +1,10 @@
 
+function gotoFinishPage() {
+	takeScreenshot();
+	
+}
+
+
 function validateRequiredField() {
 	unfilledElms = [];
 	$(".textarea").each((i,elm) => {
@@ -13,7 +19,7 @@ function validateRequiredField() {
 		unfilledElms.push($("#user-inspiration-image")[0]);
 	}
 
-	$(".textarea, .user-image canvas").each((i, elm) => {
+	$(".textarea, .user-image-container").each((i, elm) => {
 		elm.classList.remove("invalid-flash");
 	})
 	setTimeout(function() {
@@ -100,6 +106,27 @@ function sendInspiration(name, title, description) {
 	)
 }
 
+function continueEditing() {
+	$("#overlay").fadeOut(200);
+}
+
+function downloadButtonLoader(status) {
+	downloadButton = document.getElementById("download")
+	if (status) {
+		loader = document.createElement("div");
+		loader.className = "loader";
+		downloadButton.innerHTML = "";
+		downloadButton.className = "loader-layout";
+		downloadButton.appendChild(loader);
+		downloadButton.removeAttribute("href");
+	}
+	else {
+		downloadButton.innerHTML = "";
+		downloadButton.innerText = "הורדת התמונה";
+		downloadButton.className = "";
+	}
+}
+
 function takeScreenshot(){
 	if (!validateRequiredField()) {
 		return false;
@@ -108,6 +135,8 @@ function takeScreenshot(){
 	name = $("#user-inspiration-name")[0].innerText;
 	title = $("#user-inspiration-description")[0].innerText;
 	description = $("#info .textarea")[0].innerText;
+	$("#overlay").fadeIn(200);
+	downloadButtonLoader(true);
 	sendInspiration(name, title, description);
 	html2canvas(
 		document.getElementById("generator"), 
@@ -120,15 +149,11 @@ function takeScreenshot(){
 	).then(
 		function(canvas) {
 			var image = canvas.toDataURL();
-			var tempcanvas = document.createElement('canvas');
-			tempcanvas.width=canvas.width;
-		    tempcanvas.height=canvas.height;
-		    var context=tempcanvas.getContext('2d');
-		    context.drawImage(canvas,465,40,465,524,0,0,465,524);
-			var aDownloadLink = document.createElement('a');
-			aDownloadLink.download = 'your_turn.png';
-			aDownloadLink.href = image;
-			aDownloadLink.click();
+		    $("#image-sender")[0].value = image;
+		    // aDownloadLink = document.getElementById("download");
+		    // aDownloadLink.download = 'your_turn.png';
+		    // aDownloadLink.href = image;
+		    downloadButtonLoader(false);
 		}
 	);
 	return true;
@@ -138,7 +163,6 @@ function updateUserImage(image, container, inputElm) {
 	var ratio = 1;
 	var width = container.offsetWidth;
 	var height = width * ratio;
-	container.onclick = (evt) => {evt.preventDefault(); inputElm.click()};
 	if (image !== "") {
 		loadImage(
 	    	image,

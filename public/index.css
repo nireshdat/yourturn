@@ -19,6 +19,13 @@ body {
   font-family: 'Fb Jabutinski Con English';
 }
 
+#banners input {
+  opacity: 0;
+  z-index: 100;
+  cursor: pointer;
+  font-size: 0.1vw;
+  -webkit-tap-highlight-color: transparent;
+}
 
 #generator-wrapper {
   width: 100vw;
@@ -148,13 +155,11 @@ body {
   font-family: 'FB PASHUT CORDUROY';
 }
 
-#user-self-image-container {
-  /*transform: translateX(-5%);*/
+#user-self-image-container, #user-self-image-input {
   grid-area: 2 / 3 / 3 / 5;
 }
 
-#user-inspiration-image-container {
-/*  transform: translateX(8.2%);*/
+#user-inspiration-image-container, #user-inspiration-image-input {
   grid-area: 2 / 2 / 3 / 4;
 }
 
@@ -253,3 +258,5 @@ body {
   animation-name: invalid-flash;
   animation-duration: 2s;
 }
+
+
