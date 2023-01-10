@@ -16,16 +16,17 @@ body {
 }
 
 #generator-wrapper {
-  width: 100vw;
+  width: 100%;
   height: 83.3vw;
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 5fr;
+}
+
+#generator-wrapper .button-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
 }
 
 #generator-wrapper button {
-  grid-area: 1 / 1 / 2 / 2;
-  position: relative;
   border-radius: 50vw;
   border: none;
   color: white;
@@ -33,9 +34,9 @@ body {
   font-family: 'FB JABUTINSKI CON';
   top: 50%;
   padding: 0;
-  margin: 8%;
   background: var(--template-bg-color);
   font-size: 4vw;
+  width: 20vw;
 }
 
 .image-generator {
