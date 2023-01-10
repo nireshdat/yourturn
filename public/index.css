@@ -22,29 +22,23 @@ body {
 
 #generator-wrapper {
   width: 100vw;
-  height: 83.3vw;
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 7.5fr 1fr;
 }
 
 #generator-wrapper button {
-  grid-area: 1 / 1 / 2 / 2;
-  position: relative;
   border-radius: 50vw;
   border: none;
   color: white;
-  height: 6%;
   font-family: 'FB JABUTINSKI CON';
-  top: 50%;
   padding: 0;
-  margin: 8%;
+  margin: 4rem;
   background: var(--template-bg-color);
   font-size: var(--wrapper-button-font-size);
 }
 
 .image-generator {
-  grid-area: 1 / 2 / 2 / 3;
   background: var(--template-bg-color);
   display: grid;
   grid-template-rows: 11fr 6fr 8fr;
